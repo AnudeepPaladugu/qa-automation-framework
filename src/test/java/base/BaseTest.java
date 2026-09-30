@@ -31,6 +31,10 @@ public class BaseTest {
         driver.get(applicationUrl);
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     protected void loginAsStandardUser() {
         LoginPage loginPage = new LoginPage(driver);
 
