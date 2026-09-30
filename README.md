@@ -1,34 +1,55 @@
-<div align="center">
-
 # QA Automation Framework
 
-### Web UI Test Automation with Selenium, TestNG & Maven
+<div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=2600&pause=700&center=true&vCenter=true&width=820&lines=Manual+Test+Cases+%E2%86%92+Automation+Candidates;Stable+%2B+Repeatable+%2B+Regression+Value;Page+Objects+%2B+Reusable+Configuration;TestNG+%2B+Selenium+%2B+Allure+Reporting" alt="Automation workflow animation" />
+### Web UI Test Automation with Selenium WebDriver, TestNG & Maven
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=2600&pause=700&center=true&vCenter=true&width=900&lines=Manual+Testing+%E2%86%92+Automation+Assessment;Stable+%2B+Repeatable+%2B+Regression+Focused;Page+Object+Model+%2B+Reusable+Configuration;Selenium+WebDriver+%2B+TestNG+%2B+Allure;Clean+QA+Workflow+%2B+Maintainable+Automation" alt="QA automation workflow" />
 
 <br/>
 
-![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
-![Selenium](https://img.shields.io/badge/Selenium-4.35.0-43B02A?style=for-the-badge&logo=selenium)
-![TestNG](https://img.shields.io/badge/TestNG-7.11.0-red?style=for-the-badge)
-![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven)
-![Allure](https://img.shields.io/badge/Allure-Reporting-FF6A00?style=for-the-badge)
+![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-4.35.0-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![TestNG](https://img.shields.io/badge/TestNG-7.11.0-FF6D00?style=for-the-badge)
+![Maven](https://img.shields.io/badge/Maven-3.x-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+![Allure](https://img.shields.io/badge/Allure-2.29.1-FF6A00?style=for-the-badge)
 
 </div>
 
 ---
 
-## What This Project Demonstrates
+## Project Overview
 
-This repository demonstrates a practical QA workflow from **manual testing to UI automation**.
+This repository demonstrates an end-to-end **QA testing and UI automation workflow** using a maintainable Selenium WebDriver framework.
 
-The important part is not only writing Selenium code. The repository shows how manual scenarios are reviewed, how automation candidates are selected, how the framework is structured, and how the regression suite is executed and reported.
+The project covers:
 
-**Manual testing → automation assessment → reusable framework → regression execution → failure evidence → reporting**
+**Manual test design → execution → defect thinking → automation assessment → Page Object Model → TestNG regression → failure evidence → reporting**
+
+The focus is not simply on writing Selenium scripts. It demonstrates the reasoning behind **what should be automated, how automation should be structured, and how the suite can be executed repeatedly with minimal maintenance**.
 
 ---
 
-## 🔄 Manual Test Cases → Automation Selection
+## What This Project Demonstrates
+
+- Functional test case design
+- Automation candidate assessment
+- Positive and negative testing
+- Regression-focused UI automation
+- Selenium WebDriver with Java
+- Page Object Model (POM)
+- Reusable configuration through properties
+- Explicit waits for synchronization
+- TestNG suite management
+- Failure screenshot capture
+- Allure-compatible reporting
+- Maven build and test execution
+- CI-ready project structure
+- Separation of test, page, configuration, and framework responsibilities
+
+---
+
+## Manual Testing → Automation Assessment
 
 ```mermaid
 flowchart LR
@@ -40,89 +61,75 @@ flowchart LR
     F --> G["Automate"]
     G --> H["Regression Suite"]
     H --> I["TestNG Execution"]
-    I --> J["Allure Report"]
-
-    style A fill:#e8f4ff,stroke:#1976d2
-    style B fill:#fff4cc,stroke:#d99a00
-    style D fill:#f5f5f5,stroke:#777
-    style G fill:#e8f7ee,stroke:#218739
-    style J fill:#f3e8ff,stroke:#7b3fb3
+    I --> J["Allure Reporting"]
 ```
 
-> **Note:** GitHub renders Mermaid diagrams, but it does not support animated Mermaid nodes/edges inside a README. The animated typing workflow above provides the animation, while this Mermaid diagram gives the actual decision flow.
+> GitHub supports Mermaid rendering in README files, but Mermaid nodes and connectors are not animated there. The animated typing header above provides visual motion while the Mermaid diagram communicates the actual QA decision flow.
 
-### How were automation candidates selected?
+### Automation Candidate Criteria
 
-A manual test case was considered for automation when it met several practical criteria:
+A manual scenario is a strong automation candidate when it is:
 
-| Selection factor | Why it matters |
+| Criterion | Automation value |
 |---|---|
-| **Frequently executed** | Reduces repeated manual effort |
-| **Regression-focused** | Useful after application changes |
-| **Stable functionality** | Less maintenance from changing UI behavior |
-| **Clear expected result** | Easy to validate programmatically |
-| **High business importance** | Protects important user journeys |
-| **Repetitive/data-driven** | Automation handles repeated combinations efficiently |
-| **Time-consuming manually** | Provides measurable execution savings |
+| Frequently executed | Reduces repeated manual effort |
+| Regression-focused | Reusable after application changes |
+| Stable | Lower maintenance overhead |
+| Deterministic | Produces a clear expected result |
+| Business-critical | Protects important user journeys |
+| Repetitive | Automation executes repeated actions consistently |
+| Time-consuming manually | Creates meaningful execution savings |
 
-### What should generally remain manual?
+### Scenarios Better Suited to Manual Testing
 
-Some scenarios are better suited to manual testing, such as:
+Not every test should be automated. Examples include:
 
 - Exploratory testing
-- One-time checks
+- One-time validation
 - Rapidly changing functionality
 - Subjective visual assessment
+- Usability observations
 - Scenarios requiring human judgment
 
-The goal is **not to automate every manual test case**. The goal is to automate the scenarios where automation provides repeatable regression value.
+**Automation objective:** automate where repeatability and regression value justify the maintenance cost.
 
 ---
 
-## 🧪 Automated User Journey
+## Automated Functional Coverage
 
-```
-Manual Test Cases
-       │
-       ▼
-Automation Candidate Review
-       │
-       ▼
+The current suite contains **27 TestNG test methods** across five functional areas.
+
+| Test Class | Coverage |
+|---|---|
+| `LoginTest` | Valid login, invalid credentials, required-field validation, locked account |
+| `ProductTest` | Product visibility, product details, name sorting, price sorting |
+| `CartTest` | Add, remove, badge count, multiple-item behavior |
+| `CheckoutTest` | Checkout navigation, valid information, required-field validation |
+| `CheckoutOverviewTest` | Product summary, subtotal, tax, total, order placement, return navigation |
+
+### Primary User Journey
+
+~~~text
 Login
-       │
-       ▼
-Product Listing & Sorting
-       │
-       ▼
+  ↓
+Product Listing
+  ↓
+Product Details / Sorting
+  ↓
 Cart
-       │
-       ▼
+  ↓
 Checkout
-       │
-       ▼
+  ↓
 Order Review
-       │
-       ▼
+  ↓
 Order Placement
-       │
-       ▼
-TestNG Regression Suite
-       │
-       ▼
-Allure Results
-```
-
-Current test classes:
-
-- **LoginTest**
-- **ProductTest**
-- **CartTest**
-- **CheckoutTest**
-- **CheckoutOverviewTest**
+  ↓
+Confirmation
+~~~
 
 ---
 
-## 🏗️ Framework Architecture
+## Framework Architecture
 
 ```mermaid
 flowchart TB
@@ -146,171 +153,250 @@ flowchart TB
     T --> A
 ```
 
-### Project Structure
+### Separation of Responsibilities
 
-```text
-ecommerce-qa-automation/
+~~~text
+Tests        → What to verify
+Pages        → How to interact with the UI
+BaseTest     → Driver lifecycle and shared setup
+Hooks        → Test events and failure evidence
+Utils        → Reusable framework support
+Resources    → Environment and test configuration
+~~~
+
+---
+
+## Project Structure
+
+~~~text
+qa-automation-framework/
 │
-├── src/test/java/
-│   ├── base/
-│   │   └── BaseTest.java
-│   ├── hooks/
-│   │   └── FailureScreenshotListener.java
-│   ├── pages/
-│   │   ├── LoginPage.java
-│   │   ├── ProductPage.java
-│   │   ├── CartPage.java
-│   │   ├── CheckoutPage.java
-│   │   └── CheckoutOverviewPage.java
-│   ├── tests/
-│   │   ├── LoginTest.java
-│   │   ├── ProductTest.java
-│   │   ├── CartTest.java
-│   │   ├── CheckoutTest.java
-│   │   └── CheckoutOverviewTest.java
-│   └── utils/
-│       └── ConfigReader.java
+├── .github/
+│   └── workflows/
+│       └── maven-ci.yml
 │
-├── src/test/resources/
-│   └── config/
-│       └── config.properties
+├── docs/
+│   ├── defects/
+│   │   └── QA_Bug_Reports.xlsx
+│   ├── manual/
+│   │   └── Manual_Test_Cases.xlsx
+│   └── strategy/
+│       ├── QA_Project_Observations_and_Strategy.docx
+│       ├── QA_Test_Strategy_and_Automation_Observations.docx
+│       └── QA_Test_Strategy_and_Automation_Observations.xlsx
 │
+├── src/
+│   └── test/
+│       ├── java/
+│       │   ├── base/
+│       │   │   └── BaseTest.java
+│       │   ├── hooks/
+│       │   │   └── FailureScreenshotListener.java
+│       │   ├── pages/
+│       │   │   ├── LoginPage.java
+│       │   │   ├── ProductPage.java
+│       │   │   ├── CartPage.java
+│       │   │   ├── CheckoutPage.java
+│       │   │   └── CheckoutOverviewPage.java
+│       │   ├── tests/
+│       │   │   ├── LoginTest.java
+│       │   │   ├── ProductTest.java
+│       │   │   ├── CartTest.java
+│       │   │   ├── CheckoutTest.java
+│       │   │   └── CheckoutOverviewTest.java
+│       │   └── utils/
+│       │       └── ConfigReader.java
+│       │
+│       └── resources/
+│           └── config/
+│               └── config.properties
+│
+├── .gitignore
+├── LICENSE
 ├── pom.xml
+├── README.md
 └── testng.xml
-```
+~~~
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
-Test configuration is maintained in:
+All environment and test configuration is centralized in:
 
-**src/test/resources/config/config.properties**
+`src/test/resources/config/config.properties`
 
-The framework uses the existing properties-based configuration instead of putting environment values directly inside individual test classes.
+~~~properties
+browser=chrome
+headless=false
+url=https://www.saucedemo.com/
 
-Typical settings include:
+standard.username=standard_user
+standard.password=secret_sauce
 
-- Application URL
-- Browser
-- Test credentials
-- Environment-level configuration
+invalid.username=invalid_user
+invalid.password=invalid_password
+locked.username=locked_out_user
+
+test.firstName=John
+test.lastName=Doe
+test.postalCode=500001
+~~~
+
+### Why properties-based configuration?
+
+It keeps environment and test data outside the test implementation.
+
+~~~text
+Test Class
+    ↓
+ConfigReader
+    ↓
+config.properties
+~~~
 
 ---
 
-## ▶️ Run the Full Suite
+## Run the Test Suite
 
-From the automation project directory:
+### Prerequisites
 
-```bash
+- Java 21+
+- Maven 3.x
+- Google Chrome
+- Internet connection for the application under test and Maven dependencies
+
+Selenium 4 uses Selenium Manager for driver management, so a separate ChromeDriver executable is not required.
+
+### Run the complete regression suite
+
+~~~bash
 mvn clean test
-```
+~~~
 
-The TestNG suite is defined in:
+### Run in headless mode
 
-**testng.xml**
+~~~bash
+mvn clean test -Dheadless=true
+~~~
 
-The suite groups the functional tests into a regression execution.
+The Maven Surefire plugin is configured to execute:
 
----
-
-## 📊 Reporting & Failure Evidence
-
-The framework produces Allure-compatible test results.
-
-```bash
-allure serve allure-results
-```
-
-Failure handling is implemented through:
-
-**FailureScreenshotListener.java**
-
-This provides screenshot evidence when a test fails, making failures easier to investigate.
+`testng.xml`
 
 ---
 
-## 📚 Manual QA Documentation
+## Reporting & Failure Evidence
 
-The repository contains the manual QA work that supports the automation process.
+The framework integrates with **Allure** and captures screenshots through a TestNG listener.
 
-| Document | Purpose |
-|---|---|
-| **Manual Test Cases** | Functional scenarios, test steps, test data and expected results |
-| **QA Bug Reports** | Defect documentation and tracking examples |
-| **Test Strategy & Automation Observations** | Testing approach and reasoning used to identify automation candidates |
-| **Project Observations & Strategy** | Project-level QA observations and testing approach |
+### Failure handling
 
-### Documentation
+~~~text
+Test Execution
+      ↓
+TestNG Listener
+      ↓
+Test Result
+      ↓
+Screenshot Capture
+      ↓
+Allure Attachment
+~~~
 
-- [Manual Test Cases](Manual_Test_Cases.xlsx)
-- [QA Bug Reports](QA_Bug_Reports.xlsx)
-- [Test Strategy & Automation Observations](QA_Test_Strategy_and_Automation_Observations.xlsx)
-- [Test Strategy & Automation Observations - Document](QA_Test_Strategy_and_Automation_Observations.docx)
-- [Project Observations & Strategy](QA_Project_Observations_and_Strategy.docx)
+The listener:
+
+`src/test/java/hooks/FailureScreenshotListener.java`
+
+captures browser screenshots when tests fail and attaches them to Allure results.
+
+### View Allure results
+
+~~~bash
+mvn allure:serve
+~~~
+
+Or, if Allure CLI is installed:
+
+~~~bash
+allure serve target/allure-results
+~~~
+
+Generated output is intentionally excluded from Git using `.gitignore`.
 
 ---
 
-## 🧩 Framework Design
+## Framework Design
 
 ### Page Object Model
 
-Locators and page actions are kept inside page classes.
+Each application page owns its:
 
-Tests therefore describe **what is being verified**, while page classes handle **how the application is interacted with**.
+- Locators
+- UI actions
+- Page-specific synchronization
 
-### Reusable Configuration
+Tests focus on business verification rather than low-level Selenium operations.
 
-Environment-specific values are read through:
+### Explicit Waits
 
-**ConfigReader → config.properties**
+The framework uses `WebDriverWait` and `ExpectedConditions` where synchronization is required.
 
-### Separation of Concerns
+This avoids relying on arbitrary hard-coded sleeps.
 
-```
-Tests       → What to verify
-Pages       → How to interact with the UI
-Base        → Driver lifecycle
-Hooks       → Test events / failure evidence
-Utils       → Reusable support logic
-Resources   → Configuration
-```
+### Reusable Driver Setup
 
-### Maintainability
+`BaseTest` manages:
 
-The framework keeps:
+- Configuration loading
+- Browser initialization
+- Headless execution
+- Application navigation
+- Driver cleanup
 
-- Locators inside page objects
-- Configuration inside properties
-- Driver setup inside the base layer
-- Failure handling inside listeners
-- Verification logic inside test classes
+### Failure Evidence
+
+`FailureScreenshotListener` centralizes screenshot capture instead of duplicating screenshot logic across test methods.
 
 ---
 
-## 🛠️ Tech Stack
+## QA Documentation
 
-| Tool | Version / Purpose |
+The repository includes supporting QA artifacts demonstrating the work that leads to automation.
+
+| Artifact | Purpose |
 |---|---|
-| Java | **21** |
+| [Manual Test Cases](docs/manual/Manual_Test_Cases.xlsx) | Functional scenarios, steps, data and expected results |
+| [QA Bug Reports](docs/defects/QA_Bug_Reports.xlsx) | Defect documentation examples |
+| [Test Strategy & Automation Observations](docs/strategy/QA_Test_Strategy_and_Automation_Observations.xlsx) | Automation assessment and testing observations |
+| [Test Strategy Document](docs/strategy/QA_Test_Strategy_and_Automation_Observations.docx) | Detailed QA strategy documentation |
+| [Project Observations & Strategy](docs/strategy/QA_Project_Observations_and_Strategy.docx) | Project-level testing observations |
+
+---
+
+## Technology Stack
+
+| Technology | Version / Role |
+|---|---|
+| Java | 21 |
 | Selenium WebDriver | 4.35.0 |
 | TestNG | 7.11.0 |
-| Cucumber | 7.27.2 |
-| Allure | 2.29.1 |
-| AShot | 1.5.4 |
+| Allure TestNG | 2.29.1 |
 | Maven | Build & dependency management |
+| GitHub Actions | CI |
+| Page Object Model | Framework design pattern |
 
 ---
 
-## 🎯 Complete QA Workflow
+## End-to-End QA Workflow
 
 ```mermaid
 flowchart LR
     A["Requirements"] --> B["Manual Test Design"]
     B --> C["Functional Execution"]
-    C --> D["Bug Identification"]
-    D --> E["Regression Candidate Selection"]
-    E --> F["Automation Feasibility Review"]
+    C --> D["Defect Identification"]
+    D --> E["Regression Candidate Review"]
+    E --> F["Automation Feasibility"]
     F --> G["Page Object Design"]
     G --> H["Selenium Automation"]
     H --> I["TestNG Regression"]
@@ -320,8 +406,39 @@ flowchart LR
 
 ---
 
+## Engineering Quality Checklist
+
+- [x] Page Object Model
+- [x] Reusable configuration
+- [x] Explicit waits
+- [x] Centralized driver lifecycle
+- [x] TestNG suite configuration
+- [x] Failure screenshot listener
+- [x] Allure-compatible results
+- [x] Maven build configuration
+- [x] CI workflow
+- [x] Generated artifacts excluded from source control
+- [x] QA documentation included
+- [x] Manual-to-automation reasoning documented
+
+---
+
+## Future Enhancements
+
+- Cross-browser execution
+- Data-driven testing with TestNG `@DataProvider`
+- Environment profiles
+- Parallel execution
+- API test layer
+- Smoke and regression suite groups
+- Advanced Allure metadata
+- CI artifact publishing
+- Dependency/security automation
+
+---
+
 <div align="center">
 
-### QA Thinking + Automation + Maintainable Framework Design
+### QA Thinking • Reliable Automation • Maintainable Framework Design
 
 </div>
