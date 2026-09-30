@@ -1,28 +1,33 @@
 # E-Commerce QA Automation
 
-Selenium and TestNG automation framework for validating key e-commerce user journeys.
+Selenium-based test automation framework for validating key e-commerce user journeys.
 
 ## Tech Stack
 
 - Java 17
-- Selenium WebDriver
-- TestNG
+- Selenium WebDriver 4.35.0
+- TestNG 7.11.0
+- Cucumber 7.27.2
+- Allure 2.29.1
+- AShot 1.5.4
 - Maven
-- Allure Reports
 
-## Coverage
+## Test Coverage
 
-The suite covers:
+The automation suite covers:
 
 - Login validation
-- Product listing and product details
+- Product listing
+- Product details
 - Product sorting
 - Cart operations
-- Checkout flow
-- Order review and placement
-- Failure and success screenshots through Allure
+- Checkout validation
+- Checkout overview
+- Order placement
+- Screenshot capture for test results
+- Test reporting with Allure
 
-## Project Structure
+## Framework Structure
 
 ```text
 ecommerce-qa-automation/
@@ -42,37 +47,27 @@ ecommerce-qa-automation/
 
 ## Configuration
 
-Test data and browser settings are maintained in:
+Project configuration is maintained in:
 
 `src/test/resources/config/config.properties`
 
-Example:
+Browser, application URL, and test credentials can be managed from the properties file rather than hard-coding them in test classes.
 
-```properties
-browser=chrome
-url=https://www.saucedemo.com/
+## Run the Tests
 
-standard.username=standard_user
-standard.password=secret_sauce
-```
-
-## Run the Test Suite
-
-From the `ecommerce-qa-automation` directory:
+Open a terminal in the `ecommerce-qa-automation` directory and run:
 
 ```bash
 mvn clean test
 ```
 
-The TestNG suite is configured through `testng.xml`.
+The Maven Surefire plugin uses `testng.xml` to execute the regression suite.
 
-## Test Reports
+## Allure Report
 
-TestNG output is generated under `test-output/`.
+After test execution, Allure results are generated for reporting.
 
-Allure results are generated under `allure-results/`.
-
-To open an Allure report locally:
+To generate and open the report locally:
 
 ```bash
 allure serve allure-results
@@ -80,12 +75,23 @@ allure serve allure-results
 
 ## Framework Design
 
-The framework follows the Page Object Model and separates:
+The framework uses the Page Object Model to keep test logic separate from page interactions.
 
-- Test cases
-- Page interactions
-- Driver setup and teardown
-- Configuration
-- Test listeners and reporting
+The project is organized into:
 
-This keeps the automation suite organized and easier to maintain.
+- **Base**: WebDriver setup and teardown
+- **Pages**: Page-level locators and actions
+- **Tests**: Functional and regression test cases
+- **Hooks**: Test listeners and screenshot handling
+- **Utils**: Reusable configuration and helper methods
+- **Resources**: Environment and test configuration
+
+## Build
+
+The project uses Maven for dependency management and test execution.
+
+Java source and target compatibility are configured to **Java 17** in `pom.xml`.
+
+## Project Purpose
+
+This project demonstrates a maintainable UI automation framework for an e-commerce application using Selenium, TestNG, Maven, and Allure reporting.
