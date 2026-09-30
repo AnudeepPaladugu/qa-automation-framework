@@ -29,7 +29,7 @@ public class FailureScreenshotListener implements ITestListener {
                 return;
             }
 
-            WebDriver driver = baseTest.driver;
+            WebDriver driver = baseTest.getDriver();
 
             if (driver == null) {
                 return;
